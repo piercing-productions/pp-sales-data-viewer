@@ -1,0 +1,227 @@
+// bower:scss
+// endbower
+
+/* app css stylesheet */
+
+
+#panel1,
+#panel2 {
+  max-width: 900px;
+}
+
+#tags {
+  width: 350px;
+}
+
+h2 {
+  background-color: #d1d1d1;
+  padding: 15px;
+  /*margin-bottom: 1em;*/
+}
+
+.container {
+  margin-top: 1em
+}
+
+.navbar-form {
+  padding: 0;
+  margin-right: 1em
+}
+
+.table {
+  margin: 0
+}
+
+#newaccount {
+  margin-top: 8px
+}
+
+.total {
+  font-weight: bold;
+  font-size: 110%
+}
+/*.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover,
+ .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+  background-color: #066;
+}*/
+
+// .table.table-bordered {
+//   padding: 1em;
+// }
+//
+// .table-bordered th {
+//   cursor: pointer;
+// }
+//
+// .table-bordered .caret {
+//   position: relative;
+//   top: 10px;
+//   right: 5px;
+//   float: right;
+//   /*color: #bfbfc1;*/
+// }
+
+#demo {
+  cursor: pointer;
+}
+
+span.city {
+  text-transform: capitalize;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  padding-top: 20px;
+}
+
+.alert {
+  box-shadow: 0px 0px 8px 0px #999;
+}
+
+h1.heading {
+  //font-size: 64px;
+  font-size: 3.25rem;
+  font-weight: 700;
+  color: #449d44; /*#959595;*/
+  text-transform: capitalize;
+  letter-spacing: 4px;
+}
+
+h2.title {
+  //font-size: 24px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #959595;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+pre {
+  margin: 10px 0 10px;
+}
+
+.btn-group .btn {
+  //font-size: 36px;
+  font-size: 2.0rem;
+  margin-bottom: 5px;
+}
+
+.btn-group .btn, .btn-group .btn:active, .btn-group .btn:hover, .btn-group .btn:focus {
+  outline: none;
+}
+
+.btn input[type=radio], .btn-group>.btn input[type=radio] {
+  position: absolute;
+  clip: rect(0,0,0,0);
+  pointer-events: none;
+}
+.btn.active, .btn.active:hover {
+  color: white;
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+.btn.disabled {
+  background-color: #efefef;
+}
+
+.btn:hover {
+  color: #333;
+  background-color: #dff0d8;
+  border-color: #398439;
+}
+
+hr {
+  margin: 2.5rem 0;
+  border-color: #dedede;
+}
+
+// sizingBases>button, reshapingBases>button {
+//   width: 100px;
+// }
+
+.jumbotron {
+  margin-top: 2.0rem;
+  background-color: #dff0d8;
+  /*background-color: #d9edf7;*/
+}
+
+// .table {
+//   //font-size: 72px;
+//   font-size: 4.5rem;
+//   margin-bottom: 0px;
+// }
+
+// .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,
+// .table>tbody>tr>td, .table>tfoot>tr>td {
+//   border-color: #333;
+// }
+
+// .table td, .table th {
+//   width: 33%;
+// }
+
+.table .shim {
+
+}
+
+// .table>tbody+tbody {
+//   border-top: 1px solid gray;
+// }
+
+.container {
+  width: 90%;
+}
+
+
+@media (min-width: 1400px) {
+  h1.heading {
+    font-size: 4.0rem;
+    letter-spacing: 6px;
+  }
+}
+
+@media (max-width: 1199px) {
+  html {
+    font-size: 75%;
+  }
+  h1.heading {
+    font-size: 3.00rem;
+    letter-spacing: 2px;
+  }
+  // .jumbotron {
+  //   //margin: 0;
+  //   //padding: 1.0rem;
+  // }
+  // .heading + .jumbotron {
+  //   margin-bottom: 3.0rem;
+  // }
+  // .btn-group .btn {
+  //   font-size: 30px;
+  // }
+  // h1.title, thead {
+  //   font-size: 18px;
+  // }
+  // .table {
+  //   font-size: 48px;
+  // }
+}
+
+@media (max-width: 767px) {
+  h1.heading {
+    font-size: 2.5rem;
+    letter-spacing: 0px;
+  }
+  .jumbotron {
+    //margin: 0;
+    padding: 5px;
+  }
+  .table {
+    font-size: 2.0rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}

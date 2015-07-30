@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Raw Sales Data</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <link rel="stylesheet prefetch" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  </head>
+  <body ng-app="salesApp">
+    <!--[if lte IE 8]>
+      <div class="alert alert-danger text-center">
+        <h1>WARNING:  <span class="small">This web application does not work in IE8.
+        Please <a href="http://browsehappy.com/">upgrade your browser</a> or contact IT for assistance.</span>
+      </div>
+    <![endif]-->
+
+    <!-- <div class="alert alert-danger text-center">
+      <h1>WARNING:  <span class="small">For demonstration purposes only.  The data below is not accurate.</span>
+    </div> -->
+
+    <!-- Add your site or application content here -->
+
+    <div ng-controller="listCtrl" id="panel1">
+
+      <div class="container col-md-12">
+        <div class="form-group">
+          <form class="navbar-form" role="search">
+            <div class="form-group input-group">
+              <input type="text" class="form-control" placeholder="Search customers or groups" name="q" id="tags" ng-model="query" autofocus>
+              <div class="input-group-btn">
+                <button class="btn btn-default btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <h1>Annual Tons for {{query}}</h1>
+        <div google-chart chart="chartObject" style="{{cssStyle}}"></div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Customer Code</th>
+              <th>Ship To</th>
+              <th ng-repeat="year in years">{{year}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="c in raw | filter:query">
+              <td>{{c.cus_no}}</td>
+              <td>{{c.shipTo_cd}} - <span class="city">{{c.shipTo_city | lowercase}}</span>, {{c.shipTo_state}}</td>
+              <td ng-repeat="year in years">{{c[year] | number:0 }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+        <!-- <pre> {{raw | json}}</pre> -->
+
+        <!-- <input ng-model="query"> -->
+
+      <!-- <div class="col-md-12">
+        <ul>
+          <li ng-repeat="r in raw | filter:query">
+            <p>{{r.cus_no + " , " + r.shipTo_cd + " , " + r.YEAR + " , " + r.Tons}}</p>
+          </li>
+        </ul>
+      </div> -->
+
+    </div>
+
+  </div>
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+    <!-- <script src="scripts/controllers/main.js"></script> -->
+    <!-- endbuild -->
+</body>
+</html>
