@@ -64,7 +64,7 @@ grunt build
 
 ## Deploying/Pushing the Application Files
 
-I've disabled the capability to deploy for now.  Otherwise you could simply call:
+**__I've disabled the capability to deploy for now__.**  Otherwise you could simply call:
 
 ```
 grunt push
