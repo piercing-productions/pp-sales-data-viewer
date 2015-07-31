@@ -73,7 +73,7 @@ salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
 
 
   $(':submit').click(function() {
-    if ($('#tags').val() != $scope.selectedCustomer) {
+    if ($('#tags').val() !== $scope.selectedCustomer) {
       $scope.$apply(function() {
         // sync up vars
         $scope.query = $scope.selectedCustomer = $('#tags').val();
