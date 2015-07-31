@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc overview
- * @name ppBaseAppSeedApp
+ * @name ppSalesDataViewer
  * @description
- * # ppBaseAppSeedApp
+ * # Alpha version of a viewer for data
  *
  * Main module of the application.
  */
@@ -18,11 +18,11 @@ salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.customers = [];
     $scope.selectedCustomer = {};
     $scope.years = ['2010', '2011', '2012', '2013', '2014', '2015'];
-    $scope.curTonsData = [0, 0, 0, 0, 0, 0];
+    // $scope.curTonsData = [0, 0, 0, 0, 0, 0];
     $scope.resetTonsData = function() {
       $scope.curTonsData = [0, 0, 0, 0, 0, 0];
     };
-    // $scope.resetTonsData();
+    $scope.resetTonsData();
 
     $scope.calcTotalTons = function() {
       $scope.resetTonsData();
@@ -50,28 +50,6 @@ salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
 
   });
 
-  // $scope.showSelected = function(q) {
-  //   //alert('starting showSelected, q = ' + q + ', raw.length = ' + $scope.raw.length);
-  //   for (var i = 0; i < $scope.raw.length; i++) {
-  //     if ($scope.raw[i].cus_no.trim() === q) {
-  //       for (var j = 0; j < $scope.raw[i].shipTos.length; i++) {
-  //         console.log($scope.raw[i].shipTos[j].tons[0]);
-  //       }
-  //     }
-  //   }
-  // };
-
-  // SELECT CUSTOMER
-  // $scope.selectCustomer = function() {
-  //   // cache array of nodes
-  //
-  //   $scope.selectedCustomer =
-  //   //
-  // };
-
-  // RENDER
-
-
   $(':submit').click(function() {
     if ($('#tags').val() !== $scope.selectedCustomer) {
       $scope.$apply(function() {
@@ -94,36 +72,6 @@ salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
   });
 
   $scope.chartObject = {};
-
-  // $scope.chartObject.data = {'cols': [
-  //     {id: 't', label: 'Year', type: 'string'},
-  //     {id: 's', label: 'Tons', type: 'number'}
-  // ], 'rows': [
-  //     {c: [
-  //         {v: '2010'},
-  //         {v: 300},
-  //     ]},
-  //     {c: [
-  //         {v: '2011'},
-  //         {v: 275},
-  //     ]},
-  //     {c: [
-  //         {v: '2012'},
-  //         {v: 178}
-  //     ]},
-  //     {c: [
-  //         {v: '2013'},
-  //         {v: 489},
-  //     ]},
-  //     {c: [
-  //         {v: '2014'},
-  //         {v: 267},
-  //     ]},
-  //     {c: [
-  //         {v: '2015'},
-  //         {v: 679},
-  //     ]}
-  // ]};
 
   $scope.chartObject.type = 'ColumnChart';
   $scope.chartObject.options = {
