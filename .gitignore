@@ -5,5 +5,6 @@ dist
 bower_components
 test
 .ftppass
-app/data/
+app/data/*
+!app/data/sales.json
 app/favicon.ico
