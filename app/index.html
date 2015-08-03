@@ -47,7 +47,8 @@
 
       <div class="col-md-12">
         <h1>Annual Tons for {{query}}</h1>
-        <div google-chart chart="chartObject" style="{{cssStyle}}"></div>
+        <!-- <div google-chart chart="chartObject" style="{{cssStyle}}"></div> -->
+        <div id="chart"></div>
       </div>
 
       <div class="form-group col-md-12">
@@ -99,13 +100,14 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
-    <script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
+    <script type="text/javascript" src="scripts/pubsub.js"></script>
+    <script type="text/javascript" src="scripts/charts.js"></script>
     <!-- <script src="scripts/controllers/main.js"></script> -->
     <!-- endbuild -->
 </body>

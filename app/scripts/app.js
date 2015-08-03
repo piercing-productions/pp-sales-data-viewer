@@ -1,86 +1,68 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name ppSalesDataViewer
- * @description
- * # Alpha version of a viewer for data
- *
- * Main module of the application.
- */
+(function(){
 
-var salesApp = angular.module('salesApp', ['ui.bootstrap', 'googlechart']);
+  var salesApp = angular.module('salesApp', ['ui.bootstrap']);
 
-salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
+  salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
 
-  $http.get('data/sales.json').success(function(data) {
-    $scope.raw = data;
-    $scope.customers = [];
-    $scope.selectedCustomer = {};
-    $scope.years = ['2010', '2011', '2012', '2013', '2014', '2015'];
-    // $scope.curTonsData = [0, 0, 0, 0, 0, 0];
-    $scope.resetTonsData = function() {
-      $scope.curTonsData = [0, 0, 0, 0, 0, 0];
-    };
-    $scope.resetTonsData();
+    $http.get('data/sales.json').success(function(data) {
+      $scope.raw = data;
+      $scope.customers = [];
+      $scope.selectedCustomer = {};
+      $scope.curTonsData = [];
 
-    $scope.calcTotalTons = function() {
+      // dynamically get array of current year + 5 previous calendar years
+      $scope.years = []
+      var year = new Date().getFullYear(), timePeriod = 5;
+      for (var i = timePeriod; i >= 0; i--) {
+        $scope.years.push((year - i).toString());
+      }
+
+      $scope.resetTonsData = function() {
+        for (var i = 0; i < $scope.years.length; i++) {
+          $scope.curTonsData[i] = 0;
+        }
+      };
       $scope.resetTonsData();
-      for (var i = 0; i < $scope.raw.length; i++) {
-        if ($scope.raw[i].cus_no.trim() === $scope.selectedCustomer) {
-          for (var j = 0; j < $scope.years.length; j++) {
-            var n = $scope.raw[i][$scope.years[j]];
-            if (!isNaN(parseFloat(n))) {
-              $scope.curTonsData[j] += parseInt(n);
+
+      $scope.calcTotalTons = function() {
+        $scope.resetTonsData();
+        for (var i = 0; i < $scope.raw.length; i++) {
+          if ($scope.raw[i].cus_no.trim() === $scope.selectedCustomer) {
+            for (var j = 0; j < $scope.years.length; j++) {
+              var n = $scope.raw[i][$scope.years[j]];
+              if (!isNaN(parseFloat(n))) {
+                $scope.curTonsData[j] += parseInt(n);
+              }
             }
           }
         }
+      };
+
+      // get unique list of customers (cus_no)
+      for (var i = 0; i < $scope.raw.length; i++) {
+        $scope.customers.push($scope.raw[i].cus_no.trim());
       }
-      // console.log($scope.curTonsData);
-    };
+      $scope.customers = $.unique( $scope.customers );
 
-    // get unique list of customers (cus_no)
-    for (var i = 0; i < $scope.raw.length; i++) {
-      $scope.customers.push($scope.raw[i].cus_no.trim());
-    }
-    $scope.customers = $.unique( $scope.customers );
+      // ... to autocomplete in the search input
+      $( '#tags' ).autocomplete({ source: $scope.customers });
 
-    // ... to autocomplete in the search input
-    $( '#tags' ).autocomplete({ source: $scope.customers });
+    });
 
-  });
+    $(':submit').click(function() {
+      if ($('#tags').val() !== $scope.selectedCustomer) {
+        $scope.$apply(function() {
+          // sync up vars
+          $scope.query = $scope.selectedCustomer = $('#tags').val();
+          // get tons for selected customer
+          $scope.calcTotalTons();
+          events.emit('customerChanged', $scope.curTonsData);
+        });
+      }
+    });
 
-  $(':submit').click(function() {
-    if ($('#tags').val() !== $scope.selectedCustomer) {
-      $scope.$apply(function() {
-        // sync up vars
-        $scope.query = $scope.selectedCustomer = $('#tags').val();
-        // get tons for selected customer
-        $scope.calcTotalTons();
-        // update the chart
-        $scope.chartObject.data = [
-          ['Year', 'Tons'],
-          [$scope.years[0], $scope.curTonsData[0]],
-          [$scope.years[1], $scope.curTonsData[1]],
-          [$scope.years[2], $scope.curTonsData[2]],
-          [$scope.years[3], $scope.curTonsData[3]],
-          [$scope.years[4], $scope.curTonsData[4]],
-          [$scope.years[5] + ' YTD', $scope.curTonsData[5]]
-        ];
-      });
-    }
-  });
+  }]);
 
-  $scope.chartObject = {};
-
-  $scope.chartObject.type = 'ColumnChart';
-  $scope.chartObject.options = {
-    height: 300,
-    colors: ['#1b9e77'],
-    chartArea: {width: '80%'},
-    bar: { groupWidth: '75%' },
-    legend: { position: 'none' },
-    vAxis: { minValue: 0 }
-  };
-
-}]);
+})();
