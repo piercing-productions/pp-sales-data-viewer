@@ -3,6 +3,7 @@
 
 (function(){
 
+  var $el = document.getElementById('chart-years');
   var selectedCustomer = '';
 
   google.load('visualization', '1', {packages: ['corechart', 'bar']});
@@ -27,6 +28,7 @@
 
   // bind events
   events.on('customerChanged', render);
+  events.on('pickingCustomer', hide);
 
   //google.setOnLoadCallback(render);
 
@@ -48,7 +50,7 @@
         ]);
       }
 
-      var chart = new google.visualization.ColumnChart(document.getElementById('chart-years'));
+      var chart = new google.visualization.ColumnChart($el);
 
       // define handler for user selection
       function selectHandler() {
@@ -63,10 +65,20 @@
       // add the selection handler
       google.visualization.events.addListener(chart, 'select', selectHandler);
 
+      show();
+
       // draw the chart
       chart.draw(data, options);
     }
 
+  }
+
+  function show() {
+    $el.style.display = '';
+  }
+
+  function hide() {
+  	$el.style.display = 'none';
   }
 
 })();

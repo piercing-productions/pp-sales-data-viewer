@@ -6,6 +6,8 @@
 
   salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
 
+    //$('#table-grid').hide(); // handle init with css so it doesn't flash
+
     $http.get('data/sales-real.json').success(function(data) {
       $scope.raw = data;
       $scope.customers = [];
@@ -58,6 +60,7 @@
           $scope.query = $scope.selectedCustomer = $('#tags').val();
           // get tons for selected customer
           $scope.calcTotalTons();
+          $('#table-grid').show();
           events.emit('customerChanged', [$scope.selectedCustomer, $scope.curTonsData]);
           // events.emit('customerChanged', );
         });
@@ -66,6 +69,8 @@
 
     $('#tags').on('focus', function() {
       events.emit('pickingCustomer');
+      $('#tags').val('');
+      $('#table-grid').hide();
     })
 
   }]);
