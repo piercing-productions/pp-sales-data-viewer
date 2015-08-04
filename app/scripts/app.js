@@ -6,14 +6,14 @@
 
   salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
 
-    $http.get('data/sales.json').success(function(data) {
+    $http.get('data/sales-real.json').success(function(data) {
       $scope.raw = data;
       $scope.customers = [];
       $scope.selectedCustomer = {};
       $scope.curTonsData = [];
 
       // dynamically get array of current year + 5 previous calendar years
-      $scope.years = []
+      $scope.years = [];
       var year = new Date().getFullYear(), timePeriod = 5;
       for (var i = timePeriod; i >= 0; i--) {
         $scope.years.push((year - i).toString());
@@ -58,7 +58,8 @@
           $scope.query = $scope.selectedCustomer = $('#tags').val();
           // get tons for selected customer
           $scope.calcTotalTons();
-          events.emit('customerChanged', $scope.curTonsData);
+          events.emit('customerChanged', [$scope.selectedCustomer, $scope.curTonsData]);
+          // events.emit('customerChanged', );
         });
       }
     });
