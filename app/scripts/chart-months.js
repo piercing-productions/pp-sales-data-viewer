@@ -22,6 +22,7 @@
 
   // bind events
   events.on('getMonthChart', init);
+  events.on('pickingCustomer', hide);
 
   function init(a) {
     if (a) {

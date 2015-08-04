@@ -64,6 +64,10 @@
       }
     });
 
+    $('#tags').on('focus', function() {
+      events.emit('pickingCustomer');
+    })
+
   }]);
 
 })();
