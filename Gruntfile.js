@@ -339,7 +339,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             '*.bat',
-            '*.json',
+            'data/*.json',
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
@@ -400,21 +400,21 @@ module.exports = function (grunt) {
     // ========================
     // ftpush capabilies also disabled
     // ========================
-    // ftpush: {
-    //   build: {
-    //     auth: {
-    //       host: 'piercingproductions.com',
-    //       port: 21,
-    //       authKey: 'pp'
-    //     },
-    //     src: 'dist',
-    //     dest: '/test/BaseSettingsApp',
-    //     exclusions: [],
-    //     // keep: ['/important/images/at/server/*.jpg'],
-    //     simple: false,
-    //     useList: false
-    //   }
-    // },
+    ftpush: {
+      build: {
+        auth: {
+          host: 'piercingproductions.com',
+          port: 21,
+          authKey: 'pp'
+        },
+        src: 'dist',
+        dest: '/test/SalesDataViewer',
+        exclusions: [],
+        // keep: ['/important/images/at/server/*.jpg'],
+        simple: false,
+        useList: false
+      }
+    },
 
     // Run some tasks in parallel to speed up the build process
     concurrent: {
