@@ -67,7 +67,7 @@
       }
     });
 
-    $('#tags').on('focus', function() {
+    $('#tags').on('click', function() {
       events.emit('pickingCustomer');
       $('#tags').val('');
       $('#table-grid').hide();

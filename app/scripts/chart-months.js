@@ -14,7 +14,7 @@
       height: 425,
       titleTextStyle: {fontSize: 20},
       colors: ['#0FA1D1'],
-      chartArea: {width: '90%'},
+      chartArea: {width: '85%'},
       bar: { groupWidth: '75%' },
       legend: { position: 'none' },
       vAxis: { minValue: 0 }
@@ -36,7 +36,8 @@
   }
 
   function loadJSON() {
-    var jqxhr = $.getJSON( 'data/' + selectedYear + '.json', function() {
+    var newStr = selectedYear.replace(' YTD', ''); // trim YTD
+    var jqxhr = $.getJSON( 'data/' + newStr + '.json', function() {
       // console.log( 'success' );
     })
       .done(function(d) {
@@ -59,13 +60,13 @@
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Year');
       data.addColumn('number', 'Tons');
-      data.addColumn({type: 'number', role: 'annotation'});
+      data.addColumn({type: 'string', role: 'annotation'});
       for (var i = 0; i <= 12; i++) {
         if (d[i]) {
           var x = d[i] !== "NULL" ? parseInt(d[i]) : 0;
           data.addRows([
             // [i.toString(), x]
-            [i.toString(), x, x]
+            [i.toString(), x, numberWithCommas(x)]
           ]);
         }
       }
@@ -80,12 +81,17 @@
 
   }
 
+  // ideally, these util functions would be in a separate file... alas:
   function show() {
     $el.style.display = '';
   }
 
   function hide() {
   	$el.style.display = 'none';
+  }
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
 })();

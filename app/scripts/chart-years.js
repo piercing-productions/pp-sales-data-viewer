@@ -12,7 +12,11 @@
   // dynamically get array of current year + 5 previous calendar years
   var year = new Date().getFullYear(), years = [], timePeriod = 5;
   for (var i = timePeriod; i >= 0; i--) {
-    years.push((year - i).toString());
+    if (i > 0) {
+      years.push((year - i).toString());
+    } else {
+      years.push((year - i).toString() + ' YTD');
+    }
   }
 
   // chart options/styles
@@ -20,7 +24,7 @@
       height: 425,
       titleTextStyle: {fontSize: 32},
       colors: ['#1b9e77'],
-      chartArea: {width: '90%'},
+      chartArea: {width: '85%'},
       bar: { groupWidth: '75%' },
       legend: { position: 'none' },
       vAxis: { minValue: 0 }
@@ -44,10 +48,10 @@
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Year');
       data.addColumn('number', 'Tons');
-      data.addColumn({type: 'number', role: 'annotation'});
+      data.addColumn({type: 'string', role: 'annotation'});
       for (var i = 0; i < years.length; i++) {
         data.addRows([
-          [years[i], newTons[i], newTons[i]]
+          [years[i], newTons[i], numberWithCommas(newTons[i])]
         ]);
       }
 
@@ -74,12 +78,17 @@
 
   }
 
+  // ideally, these util functions would be in a separate file... alas:
   function show() {
     $el.style.display = '';
   }
 
   function hide() {
   	$el.style.display = 'none';
+  }
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
 })();
