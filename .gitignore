@@ -8,3 +8,4 @@ test
 app/data/*
 !app/data/sales.json
 app/favicon.ico
+.grunt/ftpush/*

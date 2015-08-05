@@ -13,9 +13,9 @@
 //   max-width: 900px;
 // }
 
-#tags {
-  width: 350px;
-}
+// #tags {
+//   width: 350px;
+// }
 
 h2 {
   background-color: #d1d1d1;
@@ -224,8 +224,14 @@ hr {
     padding: 5px;
   }
   .table {
-    font-size: 2.0rem;
+    font-size: 1.0rem;
     margin-bottom: 0;
     padding-bottom: 0;
   }
 }
+
+// @media print {
+//   #chart-years, #chart-months {
+//     height: 200px;
+//   }
+// }

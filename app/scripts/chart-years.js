@@ -7,7 +7,6 @@
   var selectedCustomer = '';
 
   google.load('visualization', '1', {packages: ['corechart', 'bar']});
-  // var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
 
   // dynamically get array of current year + 5 previous calendar years
   var year = new Date().getFullYear(), years = [], timePeriod = 5;
