@@ -17,10 +17,10 @@
 
   // chart options/styles
   var options = {
-      height: 300,
+      height: 425,
       titleTextStyle: {fontSize: 32},
       colors: ['#1b9e77'],
-      chartArea: {width: '80%'},
+      chartArea: {width: '90%'},
       bar: { groupWidth: '75%' },
       legend: { position: 'none' },
       vAxis: { minValue: 0 }
@@ -44,9 +44,10 @@
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Year');
       data.addColumn('number', 'Tons');
+      data.addColumn({type: 'number', role: 'annotation'});
       for (var i = 0; i < years.length; i++) {
         data.addRows([
-          [years[i], newTons[i]]
+          [years[i], newTons[i], newTons[i]]
         ]);
       }
 

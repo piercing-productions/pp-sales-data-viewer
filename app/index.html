@@ -45,30 +45,23 @@
         </div>
       </div>
 
-      <div class="col-md-12">
-        <!-- <h1>Annual Tons for {{query}}</h1> -->
-        <!-- <div google-chart chart="chartObject" style="{{cssStyle}}"></div> -->
+      <div class="col-md-6">
         <div id="chart-years"></div>
-      </div>
-
-      <div class="col-md-12">
-        <!-- <h1>Annual Tons for {{query}}</h1> -->
-        <!-- <div google-chart chart="chartObject" style="{{cssStyle}}"></div> -->
         <div id="chart-months"></div>
       </div>
 
-      <div class="form-group col-md-12" id="table-grid">
+      <div class="form-group col-md-6" id="table-grid">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Customer Code</th>
+              <!-- <th>Customer Code</th> -->
               <th>Ship To</th>
               <th ng-repeat="year in years">{{year}}</th>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="c in raw | filter:query">
-              <td>{{c.cus_no}}</td>
+              <!-- <td>{{c.cus_no}}</td> -->
               <td>{{c.shipTo_cd}} - <span class="city">{{c.shipTo_city | lowercase}}</span>, {{c.shipTo_state}}</td>
               <td ng-repeat="year in years">{{c[year] | number:0 }}</td>
             </tr>
@@ -76,18 +69,6 @@
         </table>
 
       </div>
-
-        <!-- <pre> {{raw | json}}</pre> -->
-
-        <!-- <input ng-model="query"> -->
-
-      <!-- <div class="col-md-12">
-        <ul>
-          <li ng-repeat="r in raw | filter:query">
-            <p>{{r.cus_no + " , " + r.shipTo_cd + " , " + r.YEAR + " , " + r.Tons}}</p>
-          </li>
-        </ul>
-      </div> -->
 
     </div>
 

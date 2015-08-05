@@ -11,10 +11,10 @@
 
   // chart options/styles
   var options = {
-      height: 300,
+      height: 425,
       titleTextStyle: {fontSize: 20},
       colors: ['#0FA1D1'],
-      chartArea: {width: '80%'},
+      chartArea: {width: '90%'},
       bar: { groupWidth: '75%' },
       legend: { position: 'none' },
       vAxis: { minValue: 0 }
@@ -59,11 +59,13 @@
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Year');
       data.addColumn('number', 'Tons');
+      data.addColumn({type: 'number', role: 'annotation'});
       for (var i = 0; i <= 12; i++) {
         if (d[i]) {
           var x = d[i] !== "NULL" ? parseInt(d[i]) : 0;
           data.addRows([
-            [i.toString(), x]
+            // [i.toString(), x]
+            [i.toString(), x, x]
           ]);
         }
       }
