@@ -62,7 +62,6 @@
         if (selectedItem) {
           //
           var label = data.getValue(selectedItem.row, 0);
-          //console.log('The user selected ' + label);
           events.emit('getMonthChart', [selectedCustomer, label]);
         }
       }

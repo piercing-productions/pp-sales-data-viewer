@@ -26,25 +26,19 @@
 
   function init(a) {
     if (a) {
-
       selectedCustomer = a[0];
       selectedYear = a[1];
-
       loadJSON();
-
     }
   }
 
   function loadJSON() {
     var newStr = selectedYear.replace(' YTD', ''); // trim YTD
     var jqxhr = $.getJSON( 'data/' + newStr + '.json', function() {
-      // console.log( 'success' );
     })
       .done(function(d) {
-        // console.log( 'second success' );
         for (var i = 0; i < d.length; i++) {
           if (d[i].cus_no == selectedCustomer) {
-            // console.log('Found the record for ' + d[i].cus_no);
             render(d[i]);
           }
         }
@@ -65,7 +59,6 @@
         if (d[i]) {
           var x = d[i] !== "NULL" ? parseInt(d[i]) : 0;
           data.addRows([
-            // [i.toString(), x]
             [i.toString(), x, numberWithCommas(x)]
           ]);
         }
