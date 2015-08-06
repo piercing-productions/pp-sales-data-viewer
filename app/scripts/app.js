@@ -1,3 +1,4 @@
+// main app module
 'use strict';
 
 (function(){
