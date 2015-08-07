@@ -7,7 +7,7 @@
 
   salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
 
-    $http.get('data/sales-real.json').success(function(data) {
+    $http.get('data/sales.json').success(function(data) {
       $scope.raw = data;
       $scope.customers = [];
       $scope.selectedCustomer = {};

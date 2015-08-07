@@ -1,4 +1,4 @@
-// Chart-Years module
+// Chart-Months module
 'use strict';
 
 (function(){
