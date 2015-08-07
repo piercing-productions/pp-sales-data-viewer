@@ -1,5 +1,7 @@
 # SalesDataViewer
 
+![Alt text](/screenshot.jpg?raw=true "Screenshot of SalesDataViewer")
+
 ## Overview
 
 This version of the Angular JS application was forked from the angular-seed.  It displays data based on user input.  Ultimately a table of data is displayed.
