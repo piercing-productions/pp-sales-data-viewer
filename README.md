@@ -13,6 +13,7 @@ This version of the Angular JS application was forked from the angular-seed.  It
 * [Node.js][node]
 * [NPM.js][npm]
 * Install the tool dependencies (`npm install`)
+* [Bower.js][bower] - Bower will automatically be installed by NPM if it isn't already.
 
 
 ## Workings of the application
