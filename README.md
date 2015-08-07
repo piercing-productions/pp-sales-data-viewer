@@ -1,10 +1,10 @@
-# SalesDataViewer
+# Sales Data Viewer
 
 ![Alt text](/screenshot.jpg?raw=true "Screenshot of SalesDataViewer")
 
 ## Overview
 
-This version of the Angular JS application was forked from the angular-seed.  It displays data based on user input.  Ultimately a table of data is displayed.
+This version of the Angular JS application was forked from the angular-seed.  It displays sales data based on user input.  The input shows a drop-down of matching results.  Once a selection is made, annual data is displayed in a column chart, as well as more granular data in a table.  Selecting one of the columns (years) from the chart displays an additional chart with monthly data.
 
 
 ## Prerequisites
