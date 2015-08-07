@@ -70,7 +70,7 @@ grunt build
 **__I've disabled the capability to deploy for now__.**  Otherwise you could simply call:
 
 ```
-grunt push
+grunt push [or grunt ftpush]
 ```
 
 
