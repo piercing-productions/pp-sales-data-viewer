@@ -48,7 +48,7 @@
   function render(d) {
     if ( d ) {
 
-      options.title = 'Monthly Tons for ' + selectedYear;
+      options.title = 'Monthly Tons Invoiced for ' + selectedYear;
 
       // the data
       var data = new google.visualization.DataTable();

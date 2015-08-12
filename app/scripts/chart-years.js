@@ -41,7 +41,7 @@
       selectedCustomer = d[0];
       var newTons = d[1];
 
-      options.title = 'Annual Tons for ' + selectedCustomer;
+      options.title = 'Annual Tons Invoiced for ' + selectedCustomer;
 
       // the data
       var data = new google.visualization.DataTable();
