@@ -230,8 +230,11 @@ hr {
   }
 }
 
-// @media print {
-//   #chart-years, #chart-months {
-//     height: 200px;
-//   }
-// }
+@media print {
+  .search {
+    display: none;
+  }
+  // #chart-years, #chart-months {
+  //   height: 75%;
+  // }
+}
