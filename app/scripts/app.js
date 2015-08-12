@@ -7,7 +7,19 @@
 
   salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
 
-    $http.get('data/sales.json').success(function(data) {
+    $http.get('data/customers.json').success(function(data) {
+      $scope.customers = [];
+      // get unique list of customers (cus_no)
+      for (var i = 0; i < data.length; i++) {
+        $scope.customers.push(data[i].cus_no.trim());
+      }
+      // $scope.customers = $.unique( $scope.customers );
+
+      // ... to autocomplete in the search input
+      $( '#tags' ).autocomplete({ source: $scope.customers });
+    });
+
+    $http.get('data/sales-real.json').success(function(data) {
       $scope.raw = data;
       $scope.customers = [];
       $scope.selectedCustomer = {};
@@ -41,14 +53,14 @@
         }
       };
 
-      // get unique list of customers (cus_no)
-      for (var i = 0; i < $scope.raw.length; i++) {
-        $scope.customers.push($scope.raw[i].cus_no.trim());
-      }
-      $scope.customers = $.unique( $scope.customers );
+      // // get unique list of customers (cus_no)
+      // for (var i = 0; i < $scope.raw.length; i++) {
+      //   $scope.customers.push($scope.raw[i].cus_no.trim());
+      // }
+      // $scope.customers = $.unique( $scope.customers );
 
-      // ... to autocomplete in the search input
-      $( '#tags' ).autocomplete({ source: $scope.customers });
+      // // ... to autocomplete in the search input
+      // $( '#tags' ).autocomplete({ source: $scope.customers });
 
     });
 
