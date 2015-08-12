@@ -26,7 +26,7 @@ This version of the Angular JS application was forked from the angular-seed.  It
 
 The following describes how you can develop, test, and deploy this application.
 
-### Installing dependencies
+#### Installing dependencies
 
 There are two kinds of dependencies in this project: tools and angular framework code.  The tools help manage and test the application.
 
@@ -45,7 +45,7 @@ folders in your project.
 * `node_modules` - contains the npm packages for the tools we need
 * `bower_components` - contains the angular framework files
 
-### Run the Application
+#### Run the Application
 
 The project is preconfigured with a simple development web server.  The simplest way to start this server is:
 
