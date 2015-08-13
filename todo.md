@@ -14,7 +14,7 @@ Need to fully flesh out the strategy for the web service(s) that will return JSO
   * else return annual data by ShipTo.
 
 
-### Features
+### New Features
 
 * Sortable table columns
 * Total row and/or column
@@ -24,14 +24,14 @@ Need to fully flesh out the strategy for the web service(s) that will return JSO
   * Sales: only sees their own
 
 
-### Optimization/Design
+### Optimization/Design/Bugs
 
 * Mobile optimization
 * Search autocomplete performance
 * Print styles:
-  * Hide search bar
   * Smaller charts side-by-side at top
-* JSON error handlers
+* Add JSON error handlers
+* Search input: capitalization issues cause mismatches
 
 
 ### Kinetic
