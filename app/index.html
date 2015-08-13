@@ -36,7 +36,7 @@
         <div class="form-group">
           <form class="navbar-form" role="search">
             <div class="form-group input-group">
-              <input type="text" class="form-control" placeholder="Search customers" name="q" id="tags" ng-model="query" autofocus>
+              <input type="text" class="form-control" placeholder="Search customers" name="q" id="tags" autofocus>
               <div class="input-group-btn">
                 <button class="btn btn-default btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
               </div>
@@ -60,7 +60,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="c in raw | filter:query">
+            <tr ng-repeat="c in raw | filter:selectedCustomer">
               <!-- <td>{{c.cus_no}}</td> -->
               <td>{{c.shipTo_cd}} - <span class="city">{{c.shipTo_city | lowercase}}</span>, {{c.shipTo_state}}</td>
               <td ng-repeat="year in years">{{c[year] | number:0 }}</td>
@@ -93,6 +93,7 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!-- <script type="text/javascript" src="scripts/autocomplete.js"></script> -->
     <script type="text/javascript" src="scripts/app.js"></script>
     <script type="text/javascript" src="scripts/pubsub.js"></script>
     <script type="text/javascript" src="scripts/chart-years.js"></script>
