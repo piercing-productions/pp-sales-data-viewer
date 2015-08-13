@@ -489,7 +489,7 @@ module.exports = function (grunt) {
   grunt.registerTask('push', [
     'build',
     // 'clean:push', // cleaning network location doesn't work just yet
-    'copy:push'
+    'ftpush'
   ]);
 
   grunt.registerTask('default', [
