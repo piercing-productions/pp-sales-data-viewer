@@ -16,7 +16,7 @@
       // $scope.customers = $.unique( $scope.customers );
 
       // ... to autocomplete in the search input
-      //$( '#tags' ).autocomplete({ source: $scope.customers });
+      $( '#tags' ).autocomplete({ source: $scope.customers });
     });
 
     $http.get('data/sales-real.json').success(function(data) {
