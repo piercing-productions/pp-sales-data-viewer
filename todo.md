@@ -24,7 +24,8 @@ Need to fully flesh out the strategy for the web service(s) that will return JSO
   * Management:  sees all
   * Sales: only sees their own
 * User hints/instructions on how to use the app
-* How to handle group data: probably another view entirely within this app
+* How to search for and display group data: probably another view entirely within this app
+* Ability to search on customer name, not just code
 
 
 ### Optimization/Design/Bugs
