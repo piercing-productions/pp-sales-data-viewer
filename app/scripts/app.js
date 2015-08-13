@@ -65,10 +65,10 @@
     });
 
     $(':submit').click(function() {
-      if ($('#tags').val() !== $scope.selectedCustomer) {
+      if ($('#tags').val().toUpperCase() !== $scope.selectedCustomer) {
         $scope.$apply(function() {
           // sync up vars
-          $scope.query = $scope.selectedCustomer = $('#tags').val();
+          $scope.query = $scope.selectedCustomer = $('#tags').val().toUpperCase();
           // get tons for selected customer
           $scope.calcTotalTons();
           // start the magic
