@@ -12,6 +12,7 @@ Need to fully flesh out the strategy for the web service(s) that will return JSO
   * `exec spGetTonsByCustomer` (with parameters)
   * if (year) return monthly data for year
   * else return annual data by ShipTo.
+* not sure yet how best to serve data for groups
 
 
 ### New Features
@@ -22,6 +23,8 @@ Need to fully flesh out the strategy for the web service(s) that will return JSO
 * User roles/restrictions
   * Management:  sees all
   * Sales: only sees their own
+* User hints/instructions on how to use the app
+* How to handle group data: probably another view entirely within this app
 
 
 ### Optimization/Design/Bugs
