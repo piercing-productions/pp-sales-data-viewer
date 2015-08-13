@@ -76,7 +76,7 @@ grunt push [or grunt ftpush]
 
 ## Demo
 
-Temporarily I have a demo of the app at `http://piercingproductions.com/test/SalesDataViewer/`
+Temporarily I have a demo of the app at [http://piercingproductions.com/test/SalesDataViewer/][demo].
 
 ## Updating Angular
 
@@ -110,3 +110,4 @@ This will find the latest versions that match the version ranges specified in th
 [karma]: http://karma-runner.github.io
 [travis]: https://travis-ci.org/
 [http-server]: https://github.com/nodeapps/http-server
+[demo]: http://piercingproductions.com/test/SalesDataViewer/
