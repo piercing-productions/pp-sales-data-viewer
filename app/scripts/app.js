@@ -7,16 +7,26 @@
 
   salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
 
-    $http.get('data/customers.json').success(function(data) {
-      $scope.customers = [];
-      // get unique list of customers (cus_no)
+    $http.get('data/customers-search.json').success(function(data) {
+      $scope.customerSearch = [];
       for (var i = 0; i < data.length; i++) {
-        $scope.customers.push(data[i].cus_no.trim());
+        $scope.customerSearch.push(data[i].cus_no.trim() + ' : ' + data[i].cus_name.trim());
+
+        // starting to work on group stuff >>>
+        // var parent = data[i].cus_parent !== null ? data[i].cus_parent.trim() + '/' : '';
+        // var type_cd = data[i].cus_type_cd !== null ? data[i].cus_type_cd.trim() + '/' : '';
+        // var group = data[i].cus_group !== null ? data[i].cus_group.trim() : '';
+        // var affils = '';
+        // if ( parent || type_cd || group ) {
+        //   affils = ' ( ' + parent + type_cd + group + ' )';
+        // }
+        // $scope.customerSearch.push(data[i].cus_no.trim() + affils + ' : ' + data[i].cus_name.trim());
+        // <<< end group stuff
+        
       }
-      // $scope.customers = $.unique( $scope.customers );
 
       // ... to autocomplete in the search input
-      $( '#tags' ).autocomplete({ source: $scope.customers });
+      $( '#tags' ).autocomplete({ source: $scope.customerSearch });
     });
 
     $http.get('data/sales-real.json').success(function(data) {
@@ -65,10 +75,13 @@
     });
 
     $(':submit').click(function() {
-      if ($('#tags').val().toUpperCase() !== $scope.selectedCustomer) {
+      var i = $('#tags').val().toUpperCase().substring(0,6);
+
+      console.log(i);
+      if (i !== $scope.selectedCustomer) {
         $scope.$apply(function() {
           // sync up vars
-          $scope.query = $scope.selectedCustomer = $('#tags').val().toUpperCase();
+          $scope.query = $scope.selectedCustomer = i; // $('#tags').val().toUpperCase();
           // get tons for selected customer
           $scope.calcTotalTons();
           // start the magic
