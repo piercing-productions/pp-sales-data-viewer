@@ -18,14 +18,13 @@ Need to fully flesh out the strategy for the web service(s) that will return JSO
 ### New Features
 
 * Sortable table columns
-* Total row and/or column
-* Deep linking (link with cus_no and year as parameters)
+* Add Total row and/or column to table
 * User roles/restrictions
   * Management:  sees all
   * Sales: only sees their own
-* User hints/instructions on how to use the app
 * How to search for and display group data: probably another view entirely within this app
 * Ability to search on customer name, not just code
+* Deep linking (link with cus_no and year as parameters)
 
 
 ### Optimization/Design/Bugs
@@ -35,7 +34,9 @@ Need to fully flesh out the strategy for the web service(s) that will return JSO
 * Print styles:
   * Smaller charts side-by-side at top
 * Add JSON error handlers
-* Search input: capitalization issues cause mismatches
+* Improve UI
+  * Page and chart titles
+  * Hints/instructions on use
 
 
 ### Kinetic
