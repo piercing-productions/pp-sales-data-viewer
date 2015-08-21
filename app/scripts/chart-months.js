@@ -38,7 +38,7 @@
     })
       .done(function(d) {
         for (var i = 0; i < d.length; i++) {
-          if (d[i].cus_no == selectedCustomer) {
+          if (d[i].cus_no === selectedCustomer) {
             render(d[i]);
           }
         }
@@ -57,7 +57,7 @@
       data.addColumn({type: 'string', role: 'annotation'});
       for (var i = 0; i <= 12; i++) {
         if (d[i]) {
-          var x = d[i] !== "NULL" ? parseInt(d[i]) : 0;
+          var x = d[i] !== 'NULL' ? parseInt(d[i]) : 0;
           data.addRows([
             [i.toString(), x, numberWithCommas(x)]
           ]);
@@ -84,7 +84,7 @@
   }
 
   function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
 })();

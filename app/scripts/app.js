@@ -11,6 +11,18 @@
       $scope.customerSearch = [];
       for (var i = 0; i < data.length; i++) {
         $scope.customerSearch.push(data[i].cus_no.trim() + ' : ' + data[i].cus_name.trim());
+
+        // starting to work on group stuff >>>
+        // var parent = data[i].cus_parent !== null ? data[i].cus_parent.trim() + '/' : '';
+        // var type_cd = data[i].cus_type_cd !== null ? data[i].cus_type_cd.trim() + '/' : '';
+        // var group = data[i].cus_group !== null ? data[i].cus_group.trim() : '';
+        // var affils = '';
+        // if ( parent || type_cd || group ) {
+        //   affils = ' ( ' + parent + type_cd + group + ' )';
+        // }
+        // $scope.customerSearch.push(data[i].cus_no.trim() + affils + ' : ' + data[i].cus_name.trim());
+        // <<< end group stuff
+        
       }
 
       // ... to autocomplete in the search input
