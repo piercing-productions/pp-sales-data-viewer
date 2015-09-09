@@ -21,7 +21,7 @@
   // chart options/styles
   var options = {
       height: 425,
-      titleTextStyle: {fontSize: 32},
+      titleTextStyle: {fontSize: 24},
       colors: ['#1b9e77'],
       chartArea: {width: '85%'},
       bar: { groupWidth: '75%' },
@@ -38,10 +38,12 @@
   function render(d) {
     if ( d ) {
 
-      selectedCustomer = d[0];
-      var newTons = d[1];
+      var selectedCustomer = d[0];
+      var selectedCustomerName = toTitleCase(d[1]);
+      var newTons = d[2];
 
-      options.title = 'Annual Tons Invoiced for ' + selectedCustomer;
+      options.title = 'Annual Tons Invoiced for '
+        + selectedCustomerName + ' (' + selectedCustomer + ')';
 
       // the data
       var data = new google.visualization.DataTable();
@@ -87,6 +89,10 @@
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  function toTitleCase(str)  {
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   }
 
 })();

@@ -75,20 +75,20 @@
     });
 
     $(':submit').click(function() {
-      var i = $('#tags').val().toUpperCase().substring(0,6);
-
-      console.log(i);
-      if (i !== $scope.selectedCustomer) {
-        $scope.$apply(function() {
-          // sync up vars
-          $scope.query = $scope.selectedCustomer = i; // $('#tags').val().toUpperCase();
-          // get tons for selected customer
-          $scope.calcTotalTons();
-          // start the magic
-          $('#table-grid').show();
-          events.emit('customerChanged', [$scope.selectedCustomer, $scope.curTonsData]);
-        });
-      }
+      var $tagVal = $('#tags').val().toUpperCase();
+      var i = $tagVal.substring(0,6);
+      var j = $tagVal.substring(9, $tagVal.length);
+      
+      $scope.$apply(function() {
+        // sync up vars
+        $scope.query = i;
+        $scope.selectedCustomer = i; // $('#tags').val().toUpperCase();
+        // get tons for selected customer
+        $scope.calcTotalTons();
+        // start the magic
+        $('#table-grid').show();
+        events.emit('customerChanged', [i, j, $scope.curTonsData]);
+      });
     });
 
     $('#tags').on('click', function() {
