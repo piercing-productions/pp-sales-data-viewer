@@ -7,7 +7,7 @@
 
   salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
 
-    $http.get('data/customers-search.json').success(function(data) {
+    $http.get('/Commercial/GetCustomerData').success(function(data) {
       $scope.customerSearch = [];
       for (var i = 0; i < data.length; i++) {
         $scope.customerSearch.push(data[i].cus_no.trim() + ' : ' + data[i].cus_name.trim());
