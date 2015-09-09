@@ -29,7 +29,7 @@
       $( '#tags' ).autocomplete({ source: $scope.customerSearch });
     });
 
-    $http.get('data/sales-real.json').success(function(data) {
+    $http.get('/Commercial/GetSalesData').success(function(data) {
       $scope.raw = data;
       $scope.customers = [];
       $scope.selectedCustomer = {};

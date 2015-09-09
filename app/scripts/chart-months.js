@@ -12,7 +12,7 @@
   // chart options/styles
   var options = {
       height: 425,
-      titleTextStyle: {fontSize: 20},
+      titleTextStyle: {fontSize: 32},
       colors: ['#0FA1D1'],
       chartArea: {width: '85%'},
       bar: { groupWidth: '75%' },

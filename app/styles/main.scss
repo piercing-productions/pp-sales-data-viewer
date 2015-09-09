@@ -3,8 +3,12 @@
 
 /* app css stylesheet */
 
-#table-grid{
-  display: none;
+// #table-grid{
+//   display: none;
+// }
+
+span.city {
+  text-transform: capitalize;
 }
 
 
@@ -69,9 +73,7 @@ h2 {
   cursor: pointer;
 }
 
-span.city {
-  text-transform: capitalize;
-}
+
 
 html {
   font-size: 100%;
