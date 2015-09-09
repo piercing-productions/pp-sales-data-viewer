@@ -39,7 +39,8 @@
     if ( d ) {
 
       var selectedCustomer = d[0];
-      var selectedCustomerName = toTitleCase(d[1]);
+      // var selectedCustomerName = toTitleCase(d[1]);
+      var selectedCustomerName = d[1];
       var newTons = d[2];
 
       options.title = 'Annual Tons Invoiced for '
