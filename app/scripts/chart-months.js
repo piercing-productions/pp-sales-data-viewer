@@ -34,7 +34,7 @@
 
   function loadJSON() {
     var newStr = selectedYear.replace(' YTD', ''); // trim YTD
-    var jqxhr = $.getJSON( 'data/' + newStr + '.json', function() {
+    var jqxhr = $.getJSON( '/Commercial/data/' + newStr + '.json', function() {
     })
       .done(function(d) {
         for (var i = 0; i < d.length; i++) {
