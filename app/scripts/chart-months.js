@@ -1,5 +1,5 @@
 // Chart-Months module
-'use strict';
+// 'use strict';
 
 (function(){
 

@@ -1,5 +1,5 @@
 // Chart-Years module
-'use strict';
+// 'use strict';
 
 (function(){
 
