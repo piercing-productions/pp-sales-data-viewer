@@ -7,78 +7,65 @@
 
   salesApp.controller('listCtrl', ['$scope', '$http', function($scope, $http) {
 
-    $http.get('/Commercial/GetCustomerData').success(function(data) {
-      $scope.customerSearch = [];
-      for (var i = 0; i < data.length; i++) {
-        $scope.customerSearch.push(data[i].cus_no.trim() + ' : ' + data[i].cus_name.trim());
-
-        // starting to work on group stuff >>>
-        // var parent = data[i].cus_parent !== null ? data[i].cus_parent.trim() + '/' : '';
-        // var type_cd = data[i].cus_type_cd !== null ? data[i].cus_type_cd.trim() + '/' : '';
-        // var group = data[i].cus_group !== null ? data[i].cus_group.trim() : '';
-        // var affils = '';
-        // if ( parent || type_cd || group ) {
-        //   affils = ' ( ' + parent + type_cd + group + ' )';
-        // }
-        // $scope.customerSearch.push(data[i].cus_no.trim() + affils + ' : ' + data[i].cus_name.trim());
-        // <<< end group stuff
-        
-      }
-
-      // ... to autocomplete in the search input
-      $( '#tags' ).autocomplete({ source: $scope.customerSearch });
-    });
-
-    $http.get('/Commercial/GetSalesData').success(function(data) {
-      $scope.raw = data;
-      $scope.customers = [];
-      $scope.selectedCustomer = {};
-      $scope.curTonsData = [];
-
-      // dynamically get array of current year + 5 previous calendar years
-      $scope.years = [];
-      var year = new Date().getFullYear(), timePeriod = 5;
-      for (var i = timePeriod; i >= 0; i--) {
-        $scope.years.push((year - i).toString());
-      }
-
-      $scope.resetTonsData = function() {
-        for (var i = 0; i < $scope.years.length; i++) {
-          $scope.curTonsData[i] = 0;
+    $http({method: 'GET', url:'/Commercial/GetCustomerData'})
+      .then(function(response) {
+        $scope.customerSearch = [];
+        var data = response.data;
+        for (var i = 0; i < data.length; i++) {
+          $scope.customerSearch.push(data[i].cus_no.trim() + ' : ' + data[i].cus_name.trim());
         }
-      };
-      $scope.resetTonsData();
 
-      $scope.calcTotalTons = function() {
+        // ... to autocomplete in the search input
+        $( '#tags' ).autocomplete({ source: $scope.customerSearch });
+      }, function(response) {
+        console.log('Error loading customer JSON data.');
+        events.emit('alert');
+      });
+
+    $http({method: 'GET', url:'/Commercial/GetSalesData'})
+      .then(function(response) {
+        $scope.raw = response.data;
+        $scope.customers = [];
+        $scope.selectedCustomer = {};
+        $scope.curTonsData = [];
+
+        // dynamically get array of current year + 5 previous calendar years
+        $scope.years = [];
+        var year = new Date().getFullYear(), timePeriod = 5;
+        for (var i = timePeriod; i >= 0; i--) {
+          $scope.years.push((year - i).toString());
+        }
+
+        $scope.resetTonsData = function() {
+          for (var i = 0; i < $scope.years.length; i++) {
+            $scope.curTonsData[i] = 0;
+          }
+        };
         $scope.resetTonsData();
-        for (var i = 0; i < $scope.raw.length; i++) {
-          if ($scope.raw[i].cus_no.trim() === $scope.selectedCustomer) {
-            for (var j = 0; j < $scope.years.length; j++) {
-              var n = $scope.raw[i][$scope.years[j]];
-              if (!isNaN(parseFloat(n))) {
-                $scope.curTonsData[j] += parseInt(n);
+
+        $scope.calcTotalTons = function() {
+          $scope.resetTonsData();
+          for (var i = 0; i < $scope.raw.length; i++) {
+            if ($scope.raw[i].cus_no.trim() === $scope.selectedCustomer) {
+              for (var j = 0; j < $scope.years.length; j++) {
+                var n = $scope.raw[i][$scope.years[j]];
+                if (!isNaN(parseFloat(n))) {
+                  $scope.curTonsData[j] += parseInt(n);
+                }
               }
             }
           }
-        }
-      };
-
-      // // get unique list of customers (cus_no)
-      // for (var i = 0; i < $scope.raw.length; i++) {
-      //   $scope.customers.push($scope.raw[i].cus_no.trim());
-      // }
-      // $scope.customers = $.unique( $scope.customers );
-
-      // // ... to autocomplete in the search input
-      // $( '#tags' ).autocomplete({ source: $scope.customers });
-
-    });
+        };
+      }, function(response) {
+        console.log('Error loading annual sales JSON data.');
+        events.emit('alert');
+      });
 
     $(':submit').click(function() {
       var $tagVal = $('#tags').val().toUpperCase();
       var i = $tagVal.substring(0,6);
       var j = $tagVal.substring(9, $tagVal.length);
-      
+
       $scope.$apply(function() {
         // sync up vars
         $scope.query = i;

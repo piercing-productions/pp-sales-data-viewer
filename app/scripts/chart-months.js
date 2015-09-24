@@ -42,6 +42,10 @@
             render(d[i]);
           }
         }
+      })
+      .fail(function() {
+        console.log('Error loading monthly JSON data.');
+        events.emit('alert');
       });
   }
 
