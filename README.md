@@ -73,11 +73,6 @@ grunt build
 grunt push [or grunt ftpush]
 ```
 
-
-## Demo
-
-Temporarily I have a demo of the app at [http://piercingproductions.com/test/SalesDataViewer/][demo].
-
 ## Updating Angular
 
 Previously we recommended that you merge in changes to angular-seed into your own fork of the project.
